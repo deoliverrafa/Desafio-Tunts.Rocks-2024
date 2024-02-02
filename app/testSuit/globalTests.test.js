@@ -1,3 +1,4 @@
 describe("Global Test Suite", () => {
-    it("")
+    it("Is aproveed", async () => {
+    } )
 })
