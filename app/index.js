@@ -1,13 +1,14 @@
 const express = require('express')
 const { google } = require('googleapis')
+const credentials = require("./credentials/credentials.json")
 const app = express()
-let port;
 
+let port;
 
 async function getAuthSheets() {
 
     const auth = new google.auth.GoogleAuth({
-        keyFile: 'credentials.json',
+        credentials,
         scopes: "https://www.googleapis.com/auth/spreadsheets"
     })
 
@@ -52,9 +53,11 @@ app.get("/getRows", async (req, res) => {
     const getRows = await googlesheets.spreadsheets.values.get({
         auth,
         spreadsheetId: spreadSheetId,
-        range: "engenharia_de_software"
+        range: "engenharia_de_software",
+        valueRenderOption: "UNFORMATTED_VALUE",
+        dateTimeRenderOption: "FORMATTED_STRING"
     })
-    res.status(200).send(getRows);
+    res.status(200).send(getRows.data);
     } catch (error) {
         res.status(500).send("Error" + error)
     }
