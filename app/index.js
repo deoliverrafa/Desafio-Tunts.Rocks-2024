@@ -28,4 +28,23 @@ async function getAuthSheets() {
     }
 }
 
+
+app.get("/metadata", async (req, res) => {
+    try {
+
+        const { googlesheets, auth, spreadSheetId } = await getAuthSheets();
+
+        const metadata = await googlesheets.spreadsheets.get({
+            auth,
+            spreadsheetId: spreadSheetId
+        })
+
+        res.status(200).send(metadata);
+    } catch (error) {
+        res.status(500).send("Error" + error)
+    }
+})
+
+
+
 app.listen(port = 3001, () => console.log(`Rodando na porta ${port}`))
