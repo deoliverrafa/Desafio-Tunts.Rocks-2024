@@ -50,6 +50,7 @@ app.get("/metadata", async (req, res) => {
 // Route to get the rows info
 app.get("/getRows", async (req, res) => {
     try {
+
         const { googlesheets, auth, spreadSheetId } = await getAuthSheets();
 
         /* Here we get the sheet info 
@@ -72,6 +73,31 @@ app.get("/getRows", async (req, res) => {
     }
 })
 
+// Update route
+app.post('/updateValue', async (req, res) => {
+
+    try {
+
+        // getting the values
+        const { values } = req.body
+
+        const { googlesheets, auth, spreadSheetId } = await getAuthSheets();
+
+        // Updatting on sheets
+        const updateValue = await googlesheets.spreadsheets.values.update({
+            spreadsheetId,
+            range: "engenharia_de_software",
+            valueInputOption: "USER_ENTERED",
+            resource: { values: values }
+        })
+
+        // Returning the results
+        return res.status(200).send(updateValue)
+
+    } catch (error) {
+        res.status(500).send("Error", error)
+    }
+})
 
 // Startign the api
 let port;
