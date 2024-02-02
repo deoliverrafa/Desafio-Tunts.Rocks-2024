@@ -45,6 +45,19 @@ app.get("/metadata", async (req, res) => {
     }
 })
 
+app.get("/getRows", async (req, res) => {
+    try {
+    const { googlesheets, auth, spreadSheetId } = await getAuthSheets();
 
+    const getRows = await googlesheets.spreadsheets.values.get({
+        auth,
+        spreadsheetId: spreadSheetId,
+        range: "engenharia_de_software"
+    })
+    res.status(200).send(getRows);
+    } catch (error) {
+        res.status(500).send("Error" + error)
+    }
+})
 
 app.listen(port = 3001, () => console.log(`Rodando na porta ${port}`))
