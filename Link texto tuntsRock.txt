@@ -1,0 +1,22 @@
+Link planilha google copiada: https://docs.google.com/spreadsheets/d/1kY_edYv_PehDUHOkWUfXeDYYgv3KBC5nJj7Af5iMyJM/edit?usp=sharing
+
+Link repositório GIT: https://github.com/deoliverrafa/Desafio-Tunts.Rocks-2024
+
+Para rodar a aplicação deverá ser instalado
+
+npm install nodemon
+npm install googleapis
+npm install express
+
+para rodar o projeto basta dar um npm start no terminal
+
+o projeto está organizado por rotas então
+para consultar cada uma delas será nescessário
+abrir o navegador e consultar as seguintes rotas
+
+http://localhost:3001/attStudentsStats *Atualiza os dados de todos os alunos
+http://localhost:3001/getSheetData *Retorna apenas a situação dos alunos
+http://localhost:3001/metadata *Retorna dados gerais da planilha
+
+Minha única dúvida ficou sendo respectivo ao arredondamento de nota, para isso arredondei a NAF para
+a menor nota possível para que o aluno seja aprovado no Exame Final
