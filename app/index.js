@@ -110,10 +110,7 @@ app.get('/attStudentsStats', async (req, res) => {
         }
         
         function calculateNaf(average) {
-            const max = 100;
-            console.log("average: ", average);
             const naf = Math.max(0, (100 - average)); // Calc to NAF
-            console.log("NAF: ", naf);
             const roundedNumber = Math.ceil(naf); // Rounding number to next 
             return roundedNumber;
         }
@@ -140,7 +137,6 @@ app.get('/attStudentsStats', async (req, res) => {
 
         return res.status(200).send(studentsUpdated);
     } catch (error) {
-        console.error("Erro:", error);
         res.status(500).send("Erro interno do servidor");
     }
 });
