@@ -137,10 +137,9 @@ app.get('/attStudentsStats', async (req, res) => {
 
         return res.status(200).send(studentsUpdated);
     } catch (error) {
-        res.status(500).send("Erro interno do servidor");
+        res.status(500).send("Internal Error");
     }
 });
-
 
 // Starting the api
 let port;
