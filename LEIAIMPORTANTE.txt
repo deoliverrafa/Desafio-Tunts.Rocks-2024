@@ -10,6 +10,12 @@ npm install express
 
 para rodar o projeto basta dar um npm start no terminal
 
+Caso não funcionar o npm start deverá ser dado os seguintes comando
+
+cd app
+
+node index.js | assim o programa estára funcionando normalmente
+
 o projeto está organizado por rotas então
 para consultar cada uma delas será nescessário
 abrir o navegador e consultar as seguintes rotas
